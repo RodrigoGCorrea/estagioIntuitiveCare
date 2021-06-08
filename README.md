@@ -1,0 +1,2 @@
+# estagioIntuitiveCare
+Testes para estágio
