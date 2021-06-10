@@ -10,7 +10,7 @@ async function openBrowser() {
     headless: true,
   });
   const page = await browser.newPage();
-
+  console.log('Abrindo navegador')
   return {
     page: page,
     browser: browser
@@ -23,14 +23,20 @@ async function scrape(page) {
     await page.goto('http://www.ans.gov.br/prestadores/tiss-troca-de-informacao-de-saude-suplementar', {
       waitUntil: 'networkidle2'
     });
+    console.log('Acessando pagina')
+    const alert = await page.$x('/html/body/div[5]/div/div[2]/div/div/div/div/div[1]/button');
+    await alert[0].click();
     // Procura e clica no link do padrão TISS por meio do XPath
     const TISSRecente = await page.$x('/html/body/div[9]/div/div[2]/div[2]/div[2]/a');
     await TISSRecente[0].click();
+    await delay(1);
+    const alert2 = await page.$x('/html/body/div[5]/div/div[2]/div/div/div/div/div[1]/button')      
+    await alert2[0].click();
     // Espera a página terminar de carregar, procura o link de download e o retorna
     await page.waitForXPath('/html/body/div[9]/div/div[2]/div[2]/div[2]/table/tbody/tr[1]/td[3]');
     const link = await page.evaluate(el => el.href, (await page.$x('/html/body/div[9]/div/div[2]/div[2]/div[2]/table/tbody/tr[1]/td[3]/a'))[0])
     // Feedback para saber se a operação deu certo
-    console.log("link de download foi coletado");
+    console.log("Link de download foi coletado");
     return link;
 
   } catch (e) {
@@ -49,7 +55,7 @@ async function download(link) {
   });
   response.data.pipe(fs.createWriteStream(downloadPath));
   // Feedback para saber se a operação deu certo, informando o path em que o arquivo foi armazenado
-  console.log("download finalizado em " + downloadPath);
+  console.log("Download finalizado em " + downloadPath);
 
 }
   
