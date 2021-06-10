@@ -10,7 +10,7 @@ def main():
     file = "../Componente Organizacional.pdf"
 
     pages = PdfReader(file).pages
-    crop = (78, 86)
+    crop = (79, 86)
 
     croppedFile = "../Componente Organizacional Cortado.pdf"
     outdata = PdfWriter(croppedFile)
