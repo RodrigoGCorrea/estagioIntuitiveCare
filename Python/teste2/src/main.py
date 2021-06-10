@@ -1,6 +1,7 @@
 from parse import *
 from tabula import read_pdf
 from pdfrw import PdfReader, PdfWriter
+from pandas import to_numeric, concat
 import os
 
 
@@ -36,8 +37,13 @@ def main():
     )
     df31 = df31.drop([0])
 
-    df31middle = ParseDFMiddle(tables[2], rowNames)
-    print(df31middle)
+    for i in range(2, len(tables)-1):
+        df31middle = ParseDFMiddle(tables[i], rowNames)
+        df31 = concat([df31, df31middle], ignore_index=True)
+    
+    df31[df31.columns[0]] = to_numeric(df31[df31.columns[0]])
+    df31 = df31.sort_values(df31.columns[0])
+    print(df31)
 
 
 main()
