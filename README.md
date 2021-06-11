@@ -29,5 +29,5 @@ $ pip install -r requirements.txt
 ```
 rodar dentro da pasta do teste 2
 ```
-$ python ./src/main.py
+$ python3 ./src/main.py
 ```
