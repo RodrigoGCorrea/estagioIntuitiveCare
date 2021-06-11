@@ -4,7 +4,7 @@ def ParseDFSimple(df):
     rowNames = df.iloc[0,0].split(" ", 1)
     newdf = df.drop([0])
     newdf[rowNames] = newdf[newdf.columns[0]].str.split(" ", 1, expand=True)
-    df = df.drop(df.columns[0], axis=1)
+    newdf = newdf.drop(newdf.columns[0], axis=1)
     return newdf
 
 def ParseDFMiddle(df, rowNames):
