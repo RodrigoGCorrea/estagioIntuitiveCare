@@ -1,7 +1,7 @@
 # Estágio Intuitive Care
 Testes para estágio
 
-## teste 1 
+## Teste 1 
 Fiz um crawler usando Puppeteer para chegar ao link usando um
 headless chrome e usei o Axios para baixar o pdf.
 
@@ -16,7 +16,7 @@ rodar com
 $ npm start
 ```
 
-## teste 2
+## Teste 2
 Usei a biblioteca pdfrw para cortar o pdf em uma parte menor, facilitando o processamento.
 Em seguida, utilizei tabula para colher as informações do pdf e pandas para arrumar os Dataframes e tranforma-los para CSV.
 
@@ -29,5 +29,5 @@ $ pip install -r requirements.txt
 ```
 rodar dentro da pasta do teste 2
 ```
-$ python  ./src/main.py
+$ python3 ./src/main.py
 ```
