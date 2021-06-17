@@ -55,7 +55,7 @@ def main():
 
     # guardei os arquivos CSV
     for i in range(3):
-        dfList[i].to_csv(listFiles[i] + ".csv", index=False, encoding='utf-8')
+        dfList[i].to_csv(listFiles[i] + ".csv", index=False, encoding='latin1')
     print("CSVs construídos")
 
     # colocando os arquivos em um zip
